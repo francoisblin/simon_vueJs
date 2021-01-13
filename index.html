@@ -16,12 +16,12 @@
       ** Nous afficherons ici le score **
     <hr>
     <div>
-      <span class="carre" :class="{ bleu: hautGauche }"></span>
-      <span class="carre" :class="{ rouge: hautDroite }"></span>
+      <span class="carre" @click="selectSquare('hautGauche')" :class="{ bleu: hautGauche }"></span>
+      <span class="carre" @click="selectSquare('hautDroite')" :class="{ rouge: hautDroite }"></span>
     </div>
     <div>
-      <span class="carre" :class="{ vert: basGauche }"></span>
-      <span class="carre" :class="{ jaune: basDroite }"></span>
+      <span class="carre" @click="selectSquare('basGauche')" :class="{ vert: basGauche }"></span>
+      <span class="carre" @click="selectSquare('basDroite')" :class="{ jaune: basDroite }"></span>
     </div>
     <hr>
     <span>Sequence: </span>

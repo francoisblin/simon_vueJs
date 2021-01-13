@@ -12,12 +12,12 @@ const vm = new Vue({
   methods: {
     newGame() {
       this.sequence = []
+      this.nextTurn()
+    },
+    nextTurn() {
       this.addNewElemToSequence()
-      this[this.sequence[0]] = true
-      setTimeout(function() {
-        vm.allGray() = false
-      }, 300)
-      
+      this.allGray()
+      this.playSequence(this.tmp[0])
     },
     allGray() {
     this.hautGauche = false
@@ -25,8 +25,37 @@ const vm = new Vue({
     this.basGauche = false
     this.basDroite = false
     },
+    playSequence(instruction) {
+      setTimeout(function() { 
+        vm[instruction] = true
+        setTimeout(function() {
+          vm.allGray()
+          vm.tmp.shift()
+          if (vm.tmp[0]) {
+            vm.playSequence(vm.tmp[0])
+          } else {
+            vm.tmp = vm.sequence.slice()
+          }
+        }, 400)
+      }, 400) 
+    },
     addNewElemToSequence() {
      this.sequence.push(this.squareMapping[Math.floor(Math.random() * 4)])
+     this.tmp = this.sequence.slice()
+   },
+   selectSquare(instruction) {
+     if (instruction === this.tmp[0]){
+      vm[instruction] = true
+      setTimeout(function() {
+        vm.allGray()
+        vm.tmp.shift()
+        if (!vm.tmp[0]) {
+          vm.nextTurn()
+        }
+      }, 400)
+    } else {
+       alert('Perdu!')
+     }
    }
   }
-});
+})
