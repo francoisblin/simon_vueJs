@@ -9,6 +9,12 @@ const vm = new Vue({
     basDroite: false,
     squareMapping: ["hautGauche", "hautDroite", "basGauche", "basDroite"]
   },
+  computed: {
+    score() {
+      const value = this.sequence.length - 1
+      return (value < 0) ? 0 : value
+    }
+  },
   methods: {
     newGame() {
       this.sequence = []

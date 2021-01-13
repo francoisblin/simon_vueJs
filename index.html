@@ -13,7 +13,7 @@
       NOUVELLE PARTIE
     </button>
     <hr>
-      ** Nous afficherons ici le score **
+      <h4>Score: {{ score }}</h4>
     <hr>
     <div>
       <span class="carre" @click="selectSquare('hautGauche')" :class="{ bleu: hautGauche }"></span>
@@ -23,9 +23,6 @@
       <span class="carre" @click="selectSquare('basGauche')" :class="{ vert: basGauche }"></span>
       <span class="carre" @click="selectSquare('basDroite')" :class="{ jaune: basDroite }"></span>
     </div>
-    <hr>
-    <span>Sequence: </span>
-    <pre>{{ sequence }}</pre>
   </div>
   <script type="text/javascript" src="./index.js" ></script>
 </body>
